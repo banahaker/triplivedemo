@@ -28,7 +28,7 @@ export function ItineraryPanel({
   }, [selectedDay]);
 
   return (
-    <div className="mx-auto max-w-3xl rounded-t-xl border bg-background/95 shadow-lg backdrop-blur">
+    <div className="mx-auto max-w-3xl rounded-t-xl border bg-background shadow-lg">
       <div className="flex items-center justify-between px-4 py-2">
         <Button variant="ghost" size="sm" onClick={() => setCollapsed((c) => !c)}>
           {collapsed ? "展開行程" : "收合"}
