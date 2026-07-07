@@ -14,7 +14,6 @@ const INITIAL = { center: [121.75, 24.95] as [number, number], zoom: 9, bearing:
 export function TripMap({ days, selectedSpotId, onSelectSpot }: TripMapProps) {
   const [viewport, setViewport] = useState(INITIAL);
   const markers = markerSpots(days);
-  const dayOf = (id: string) => days.find((d) => d.spots.some((s) => s.id === id))?.day ?? 1;
 
   useEffect(() => {
     const spot = markers.find((s) => s.id === selectedSpotId);
@@ -42,7 +41,7 @@ export function TripMap({ days, selectedSpotId, onSelectSpot }: TripMapProps) {
               <div
                 className="h-4 w-4 rounded-full border-2 border-white shadow"
                 style={{
-                  backgroundColor: dayColor(dayOf(s.id)),
+                  backgroundColor: dayColor(s.day),
                   transform: s.id === selectedSpotId ? "scale(1.6)" : "scale(1)",
                 }}
                 aria-label={s.name}
