@@ -92,7 +92,7 @@ interface Spot {
 ```
 
 - 每個 category 對應一個 lucide 圖示。
-- 全部 21 筆景點預填合理的時段、停留時間與一兩句簡介。
+- 全部 20 筆項目(19 個景點 + 1 個 transit)預填合理的時段、停留時間與一兩句簡介。
 - `useTripData` 向後相容:舊格式 JSON 匯入仍可用,匯出帶完整欄位;備註沿用 localStorage。
 
 ## 元件與模組(單一職責)
@@ -109,7 +109,7 @@ interface Spot {
 | `components/TripMap.tsx` | 路線動畫層、marker 徽章 |
 | `lib/route-animation.ts` | rAF 逐段繪製的純函式(可單元測試) |
 
-`ui/map.tsx` 保留不動,必要時小幅擴充。舊 `ItineraryPanel`、`SpotNote` 由新元件取代(SpotNote 的 debounce/flush 邏輯併入 SpotCard)。
+`ui/map.tsx` 保留不動,必要時小幅擴充。舊 `ItineraryPanel` 由 `ItinerarySheet` 取代並刪除;`SpotNote`(debounce/flush 已有測試)保留重用,改由 `SpotCard` 內部渲染。
 
 ## 錯誤處理
 
