@@ -57,4 +57,22 @@ describe("ItineraryPanel", () => {
     await userEvent.click(screen.getByRole("button", { name: /匯出/ }));
     expect(onExport).toHaveBeenCalled();
   });
+
+  it("switches active tab to follow selectedSpotId across days", () => {
+    const { rerender } = render(
+      <ItineraryPanel days={days} selectedSpotId={null} onSelect={() => {}}
+        onNoteChange={() => {}} onExport={() => {}} />
+    );
+    // Initially Day1 should be active
+    expect(screen.getByRole("tab", { name: /Day1/ })).toHaveAttribute("data-state", "active");
+
+    // Rerender with selectedSpotId="b" (a Day2 spot)
+    rerender(
+      <ItineraryPanel days={days} selectedSpotId="b" onSelect={() => {}}
+        onNoteChange={() => {}} onExport={() => {}} />
+    );
+
+    // Day2 should now be the active tab
+    expect(screen.getByRole("tab", { name: /Day2/ })).toHaveAttribute("data-state", "active");
+  });
 });
