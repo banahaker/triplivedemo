@@ -26,7 +26,7 @@ interface TripMapProps {
 }
 
 // Frames the whole Keelung–Yilan trip on first paint (before any camera call).
-const INITIAL_VIEW = { center: [121.72, 24.86] as [number, number], zoom: 8.6, pitch: 30 };
+const INITIAL_VIEW = { center: [121.72, 24.86] as [number, number], zoom: 7.2, pitch: 30 };
 
 export function TripMap({
   days,

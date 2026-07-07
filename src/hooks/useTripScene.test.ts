@@ -70,4 +70,19 @@ describe("useTripScene", () => {
     expect(result.current.scene).toBe("explore");
     expect(result.current.autoPlay).toBe(false);
   });
+
+  it("replayIntro returns to intro from explore", () => {
+    const { result } = renderHook(() => useTripScene(stops));
+    act(() => result.current.startExplore());
+    act(() => result.current.replayIntro());
+    expect(result.current.scene).toBe("intro");
+  });
+
+  it("replayIntro from tour stops autoplay and returns to intro", () => {
+    const { result } = renderHook(() => useTripScene(stops));
+    act(() => result.current.startTour());
+    act(() => result.current.replayIntro());
+    expect(result.current.scene).toBe("intro");
+    expect(result.current.autoPlay).toBe(false);
+  });
 });

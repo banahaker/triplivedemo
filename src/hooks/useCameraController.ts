@@ -18,6 +18,7 @@ export interface FlyOptions {
 export interface FitOptions {
   padding?: { top: number; bottom: number; left: number; right: number };
   pitch?: number;
+  duration?: number;
 }
 
 const DEFAULT_FIT_PADDING = { top: 80, bottom: 320, left: 48, right: 48 };
@@ -46,7 +47,7 @@ export function useCameraController(mapRef: RefObject<MapRef | null>) {
       map.fitBounds(coordsBounds(coords), {
         padding: opts.padding ?? DEFAULT_FIT_PADDING,
         pitch: opts.pitch ?? 30,
-        duration: prefersReducedMotion() ? 0 : 1800,
+        duration: prefersReducedMotion() ? 0 : (opts.duration ?? 1800),
       });
     },
     [mapRef]

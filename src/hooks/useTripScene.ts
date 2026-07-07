@@ -30,6 +30,11 @@ export function useTripScene(stops: Spot[]) {
     setAutoPlay(false);
   }, []);
 
+  const replayIntro = useCallback(() => {
+    setScene("intro");
+    setAutoPlay(false);
+  }, []);
+
   const next = useCallback(
     () => setTourIndex((i) => Math.min(i + 1, lastIndex)),
     [lastIndex]
@@ -63,6 +68,7 @@ export function useTripScene(stops: Spot[]) {
     startExplore,
     startTour,
     exitTour,
+    replayIntro,
     next,
     prev,
     gotoStop,

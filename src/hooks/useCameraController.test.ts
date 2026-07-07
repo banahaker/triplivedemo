@@ -51,6 +51,16 @@ describe("useCameraController", () => {
     );
   });
 
+  it("passes a custom duration through to fitBounds", () => {
+    const map = makeMap();
+    const { result } = renderHook(() => useCameraController({ current: map }));
+    result.current.fitCoords([[121, 24], [122, 25]], { duration: 3200 });
+    expect(map.fitBounds).toHaveBeenCalledWith(
+      [[121, 24], [122, 25]],
+      expect.objectContaining({ duration: 3200 })
+    );
+  });
+
   it("does nothing without a map or coordinates", () => {
     const map = makeMap();
     const { result, rerender } = renderHook(({ m }) => useCameraController({ current: m }), {

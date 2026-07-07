@@ -7,7 +7,7 @@ import type { MapRef } from "@/components/ui/map";
 import { useCameraController } from "@/hooks/useCameraController";
 import { useTripData } from "@/hooks/useTripData";
 import { useTripScene } from "@/hooks/useTripScene";
-import { routeCoordinates, tourStops, transitContext } from "@/lib/map-utils";
+import { allCoordinates, routeCoordinates, tourStops, transitContext } from "@/lib/map-utils";
 
 export default function App() {
   const { title, days, spots, updateNote, exportJson } = useTripData();
@@ -18,10 +18,20 @@ export default function App() {
   const camera = useCameraController(mapRef);
   const {
     scene, tourIndex, currentStop, autoPlay,
-    startExplore, startTour, exitTour, next, prev, gotoStop, toggleAutoPlay,
+    startExplore, startTour, exitTour, replayIntro, next, prev, gotoStop, toggleAutoPlay,
   } = useTripScene(stops);
 
   const spotCount = useMemo(() => spots.filter((s) => s.type === "spot").length, [spots]);
+
+  // Intro: slow cinematic zoom into an overview of the whole trip.
+  useEffect(() => {
+    if (scene !== "intro") return;
+    camera.fitCoords(allCoordinates(days), {
+      padding: { top: 100, bottom: 160, left: 60, right: 60 },
+      pitch: 30,
+      duration: 3200,
+    });
+  }, [scene, days, camera]);
 
   // Tour: camera follows the current stop; keep activeDay in sync for route dimming.
   useEffect(() => {
@@ -95,6 +105,7 @@ export default function App() {
           onNoteChange={updateNote}
           onExport={handleExport}
           onStartTour={startTour}
+          onReplayIntro={replayIntro}
         />
       )}
       {scene === "tour" && (

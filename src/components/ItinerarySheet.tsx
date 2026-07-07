@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Download, Play } from "lucide-react";
+import { Download, Play, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SpotCard } from "@/components/SpotCard";
@@ -27,6 +27,7 @@ interface ItinerarySheetProps {
   onNoteChange: (spotId: string, note: string) => void;
   onExport: () => void;
   onStartTour: () => void;
+  onReplayIntro: () => void;
 }
 
 function TimelineItem({
@@ -98,6 +99,7 @@ export function ItinerarySheet({
   onNoteChange,
   onExport,
   onStartTour,
+  onReplayIntro,
 }: ItinerarySheetProps) {
   const [snap, setSnap] = useState<SnapState>("half");
   const dragStartY = useRef<number | null>(null);
@@ -154,6 +156,10 @@ export function ItinerarySheet({
           <Button variant="ghost" size="sm" aria-label="匯出 JSON" onClick={onExport}
             className="text-slate-300 hover:bg-white/10 hover:text-white">
             <Download className="size-4" />
+          </Button>
+          <Button variant="ghost" size="sm" aria-label="重看開場" onClick={onReplayIntro}
+            className="text-slate-300 hover:bg-white/10 hover:text-white">
+            <RotateCcw className="size-4" />
           </Button>
         </div>
       </header>

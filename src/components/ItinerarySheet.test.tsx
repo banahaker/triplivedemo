@@ -28,6 +28,7 @@ const baseProps = {
   onNoteChange: () => {},
   onExport: () => {},
   onStartTour: () => {},
+  onReplayIntro: () => {},
 };
 
 describe("ItinerarySheet", () => {
@@ -66,5 +67,12 @@ describe("ItinerarySheet", () => {
     expect(onExport).toHaveBeenCalled();
     await userEvent.click(screen.getByRole("button", { name: /播放導覽/ }));
     expect(onStartTour).toHaveBeenCalled();
+  });
+
+  it("fires onReplayIntro when 重看開場 is clicked", async () => {
+    const onReplayIntro = vi.fn();
+    render(<ItinerarySheet {...baseProps} onReplayIntro={onReplayIntro} />);
+    await userEvent.click(screen.getByRole("button", { name: "重看開場" }));
+    expect(onReplayIntro).toHaveBeenCalled();
   });
 });
