@@ -11,6 +11,9 @@ interface SpotNoteProps {
 export function SpotNote({ spotId, value, onChange, debounceMs = 400 }: SpotNoteProps) {
   const [draft, setDraft] = useState(value);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pendingRef = useRef<{ spotId: string; draft: string } | null>(null);
+  const onChangeRef = useRef(onChange);
+  onChangeRef.current = onChange;
 
   useEffect(() => {
     setDraft(value);
@@ -18,6 +21,10 @@ export function SpotNote({ spotId, value, onChange, debounceMs = 400 }: SpotNote
 
   useEffect(() => {
     return () => {
+      if (pendingRef.current) {
+        onChangeRef.current(pendingRef.current.spotId, pendingRef.current.draft);
+        pendingRef.current = null;
+      }
       if (timer.current) clearTimeout(timer.current);
     };
   }, []);
@@ -25,8 +32,12 @@ export function SpotNote({ spotId, value, onChange, debounceMs = 400 }: SpotNote
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const next = e.target.value;
     setDraft(next);
+    pendingRef.current = { spotId, draft: next };
     if (timer.current) clearTimeout(timer.current);
-    timer.current = setTimeout(() => onChange(spotId, next), debounceMs);
+    timer.current = setTimeout(() => {
+      pendingRef.current = null;
+      onChange(spotId, next);
+    }, debounceMs);
   };
 
   return (
