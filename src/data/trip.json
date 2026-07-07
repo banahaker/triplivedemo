@@ -1,0 +1,25 @@
+{
+  "title": "基隆宜蘭三日遊",
+  "spots": [
+    { "id": "d1-taipei-station", "day": 1, "order": 1, "name": "台北車站集合", "type": "spot", "lat": 25.0478, "lng": 121.5170, "note": "" },
+    { "id": "d1-zhengbin", "day": 1, "order": 2, "name": "正濱漁港彩色街屋", "type": "spot", "lat": 25.1533, "lng": 121.7756, "note": "" },
+    { "id": "d1-wanghaixiang", "day": 1, "order": 3, "name": "望海巷跨海景觀橋", "type": "spot", "lat": 25.1389, "lng": 121.7961, "note": "" },
+    { "id": "d1-chaojing", "day": 1, "order": 4, "name": "潮境公園", "type": "spot", "lat": 25.1408, "lng": 121.8033, "note": "" },
+    { "id": "d1-badouzi", "day": 1, "order": 5, "name": "八斗子", "type": "spot", "lat": 25.1370, "lng": 121.7997, "note": "" },
+    { "id": "d1-miaokou", "day": 1, "order": 6, "name": "基隆廟口夜市", "type": "spot", "lat": 25.1286, "lng": 121.7419, "note": "" },
+    { "id": "d1-keelung-stay", "day": 1, "order": 7, "name": "基隆住宿", "type": "spot", "lat": 25.1276, "lng": 121.7392, "note": "" },
+    { "id": "d2-transit", "day": 2, "order": 1, "name": "基隆前往宜蘭（走國五 or 台2 海岸線，取決於要快還是要看風景）", "type": "transit", "note": "" },
+    { "id": "d2-yilan-memorial", "day": 2, "order": 2, "name": "宜蘭設治紀念館", "type": "spot", "lat": 24.7522, "lng": 121.7539, "note": "" },
+    { "id": "d2-lanyang", "day": 2, "order": 3, "name": "蘭陽博物館", "type": "spot", "lat": 24.8697, "lng": 121.8306, "note": "" },
+    { "id": "d2-jiaoxi", "day": 2, "order": 4, "name": "礁溪溫泉區", "type": "spot", "lat": 24.8275, "lng": 121.7708, "note": "" },
+    { "id": "d2-luodong-forestry", "day": 2, "order": 5, "name": "羅東林業文化園區", "type": "spot", "lat": 24.6786, "lng": 121.7681, "note": "" },
+    { "id": "d2-brown-ave", "day": 2, "order": 6, "name": "冬山伯朗大道", "type": "spot", "lat": 24.6317, "lng": 121.7936, "note": "" },
+    { "id": "d2-zhongshan-trail", "day": 2, "order": 7, "name": "中山亭步道", "type": "spot", "lat": 24.6533, "lng": 121.7644, "note": "" },
+    { "id": "d2-dongmen", "day": 2, "order": 8, "name": "東門夜市", "type": "spot", "lat": 24.7561, "lng": 121.7597, "note": "" },
+    { "id": "d3-suao-cold-spring", "day": 3, "order": 1, "name": "蘇澳冷泉", "type": "spot", "lat": 24.5942, "lng": 121.8497, "note": "" },
+    { "id": "d3-qixingling", "day": 3, "order": 2, "name": "七星嶺步道", "type": "spot", "lat": 24.5983, "lng": 121.8556, "note": "" },
+    { "id": "d3-nanfangao-deck", "day": 3, "order": 3, "name": "南方澳觀景台", "type": "spot", "lat": 24.5847, "lng": 121.8600, "note": "" },
+    { "id": "d3-fenniaolin", "day": 3, "order": 4, "name": "粉鳥林", "type": "spot", "lat": 24.5211, "lng": 121.8497, "note": "" },
+    { "id": "d3-back-taipei", "day": 3, "order": 5, "name": "回台北", "type": "spot", "lat": 25.0478, "lng": 121.5170, "note": "" }
+  ]
+}
