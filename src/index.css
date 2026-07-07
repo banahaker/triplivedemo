@@ -13,3 +13,27 @@ html, body, #root { height: 100%; margin: 0; }
     @apply border-border; }
   body {
     @apply bg-background text-foreground; } }
+
+@layer base {
+  html {
+    font-family: "Noto Sans TC", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply rounded-2xl border border-white/10 bg-slate-900/70 shadow-2xl backdrop-blur-md;
+  }
+}
+
+@keyframes marker-pulse {
+  0% { box-shadow: 0 0 0 0 var(--pulse-color, rgba(34, 211, 238, 0.55)); }
+  70% { box-shadow: 0 0 0 14px rgba(0, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+}
+.marker-pulse {
+  animation: marker-pulse 1.8s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marker-pulse { animation: none; }
+}
