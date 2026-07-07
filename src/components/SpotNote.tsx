@@ -16,6 +16,12 @@ export function SpotNote({ spotId, value, onChange, debounceMs = 400 }: SpotNote
     setDraft(value);
   }, [value, spotId]);
 
+  useEffect(() => {
+    return () => {
+      if (timer.current) clearTimeout(timer.current);
+    };
+  }, []);
+
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const next = e.target.value;
     setDraft(next);

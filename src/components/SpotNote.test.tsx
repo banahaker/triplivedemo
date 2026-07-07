@@ -20,4 +20,18 @@ describe("SpotNote", () => {
     render(<SpotNote spotId="s1" value="existing" onChange={() => {}} />);
     expect(screen.getByLabelText("note-s1")).toHaveValue("existing");
   });
+
+  it("clears debounce timer on unmount", () => {
+    vi.useFakeTimers();
+    const onChange = vi.fn();
+    const { unmount } = render(
+      <SpotNote spotId="s1" value="" onChange={onChange} debounceMs={300} />
+    );
+    const box = screen.getByLabelText("note-s1");
+    fireEvent.change(box, { target: { value: "test" } });
+    expect(onChange).not.toHaveBeenCalled();
+    unmount();
+    vi.advanceTimersByTime(300);
+    expect(onChange).not.toHaveBeenCalled();
+  });
 });
