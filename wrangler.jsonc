@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "showtrip",
   "compatibility_date": "2026-07-01",
+  "routes": [{ "pattern": "triplivedemo.lazp.tw", "custom_domain": true }],
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
