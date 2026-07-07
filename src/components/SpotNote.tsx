@@ -46,7 +46,7 @@ export function SpotNote({ spotId, value, onChange, debounceMs = 400 }: SpotNote
       placeholder="寫點筆記…"
       value={draft}
       onChange={handleChange}
-      className="mt-2"
+      className="mt-3 border-white/10 bg-slate-950/60 text-slate-100 placeholder:text-slate-500"
     />
   );
 }
