@@ -30,4 +30,14 @@ describe("trip.json", () => {
       }
     }
   });
+
+  it("gives every entry a valid category, time, duration, and description", () => {
+    const CATEGORIES = ["sight", "food", "stay", "trail", "spring", "harbor", "museum", "transit"];
+    for (const s of data.spots) {
+      expect(CATEGORIES, `${s.id} category`).toContain(s.category);
+      expect(s.time, `${s.id} time`).toMatch(/^\d{2}:\d{2}$/);
+      expect(s.duration, `${s.id} duration`).toBeTruthy();
+      expect(s.description, `${s.id} description`).toBeTruthy();
+    }
+  });
 });
